@@ -113,11 +113,7 @@ def torch_cov(m, rowvar=False):
         m = m.view(1, -1)
     if not rowvar and m.size(0) != 1:
         m = m.t()
-    # m = m.type(torch.double)  # uncomment this line if desired
-    fact = 1.0 / (m.size(1) - 1)
-    m -= torch.mean(m, dim=1, keepdim=True)
-    mt = m.t()  # if complex: mt = m.t().conj()
-    return fact * m.matmul(mt).squeeze()
+    return torch.cov(m)
 
 
 # Pytorch implementation of matrix sqrt, from Tsung-Yu Lin, and Subhransu Maji
