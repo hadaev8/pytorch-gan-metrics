@@ -148,7 +148,8 @@ class InceptionV3(nn.Module):
             x = F.interpolate(x,
                               size=(299, 299),
                               mode='bilinear',
-                              align_corners=False)
+                              align_corners=False,
+                              antialias=True)
 
         if self.normalize_input:
             x = 2 * x - 1  # Scale from range (0, 1) to range (-1, 1)
