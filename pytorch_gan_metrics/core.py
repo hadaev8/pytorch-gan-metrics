@@ -2,6 +2,8 @@ from typing import List, Union, Tuple
 
 import numpy as np
 import torch
+torch.backends.cuda.matmul.allow_tf32 = False       # Improves numerical accuracy.
+torch.backends.cudnn.allow_tf32 = False             # Improves numerical accuracy.
 from scipy import linalg
 from tqdm import tqdm
 from torch.utils.data import DataLoader
